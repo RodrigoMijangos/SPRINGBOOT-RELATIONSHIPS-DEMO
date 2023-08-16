@@ -45,7 +45,7 @@ public class IncidentesControlador {
             in_bd.setFecha(incidente.getFecha());
             in_bd.setLugar(incidente.getLugar());
 
-            return in_bd;
+            return servicio.save(in_bd);
 
         }
 
