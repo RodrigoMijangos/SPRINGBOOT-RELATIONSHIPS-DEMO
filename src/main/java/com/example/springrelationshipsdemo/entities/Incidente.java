@@ -2,7 +2,9 @@ package com.example.springrelationshipsdemo.entities;
 
 import jakarta.persistence.*;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.util.Date;
 
 @Entity
 @Table(name = "incidentes")
@@ -12,11 +14,11 @@ public class Incidente {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer reporte;
     private String lugar;
-    private LocalDateTime fecha;
+    private LocalDate fecha;
 
     public Incidente(){}
 
-    public Incidente(Integer id, String lugar, LocalDateTime fecha){
+    public Incidente(Integer id, String lugar, LocalDate fecha){
 
         this.reporte = id;
         this.lugar = lugar;
@@ -36,11 +38,11 @@ public class Incidente {
         this.lugar = lugar;
     }
 
-    public LocalDateTime getFecha() {
+    public LocalDate getFecha() {
         return fecha;
     }
 
-    public void setFecha(LocalDateTime fecha) {
+    public void setFecha(LocalDate fecha) {
         this.fecha = fecha;
     }
 }
