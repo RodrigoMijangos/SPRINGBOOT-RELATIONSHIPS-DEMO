@@ -1,10 +1,10 @@
 package com.example.springrelationshipsdemo.entities;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 
 import java.time.LocalDate;
-import java.time.LocalDateTime;
-import java.util.Date;
+import java.util.Set;
 
 @Entity
 @Table(name = "incidentes")
@@ -16,6 +16,10 @@ public class Incidente {
     private String lugar;
     private LocalDate fecha;
 
+    @OneToMany(mappedBy = "incidente")
+    @JsonBackReference
+    private Set<IncidentesVinculacion> carrosVinculados;
+
     public Incidente(){}
 
     public Incidente(Integer id, String lugar, LocalDate fecha){
@@ -26,7 +30,7 @@ public class Incidente {
 
     }
 
-    public Integer getId() {
+    public Integer getReporte() {
         return reporte;
     }
 
@@ -44,5 +48,9 @@ public class Incidente {
 
     public void setFecha(LocalDate fecha) {
         this.fecha = fecha;
+    }
+
+    public Set<IncidentesVinculacion> getCarrosVinculados() {
+        return carrosVinculados;
     }
 }

@@ -1,5 +1,6 @@
 package com.example.springrelationshipsdemo.entities;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
@@ -17,6 +18,7 @@ public class Persona {
     private String direccion;
     @OneToMany(mappedBy = "duenio")
     @OnDelete(action = OnDeleteAction.CASCADE)
+    @JsonManagedReference
     private Set<Carro> carros;
 
     public Persona(){}
@@ -45,5 +47,9 @@ public class Persona {
 
     public void setDireccion(String direccion) {
         this.direccion = direccion;
+    }
+
+    public Set<Carro> getCarros() {
+        return carros;
     }
 }

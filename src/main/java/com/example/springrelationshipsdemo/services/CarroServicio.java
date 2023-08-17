@@ -44,4 +44,10 @@ public class CarroServicio {
 
     }
 
+    public List<Carro> getIncidentes(Integer reporte){
+
+        return repositorio.findAllByIncidentesVinculadosIncidenteReporte(reporte);
+
+    }
+
 }

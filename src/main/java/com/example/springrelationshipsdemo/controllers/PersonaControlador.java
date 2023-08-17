@@ -1,5 +1,6 @@
 package com.example.springrelationshipsdemo.controllers;
 
+import com.example.springrelationshipsdemo.dao.requests.PersonaRequest;
 import com.example.springrelationshipsdemo.entities.Persona;
 import com.example.springrelationshipsdemo.services.PersonaServicio;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,14 +30,19 @@ public class PersonaControlador {
     }
 
     @PostMapping
-    public Persona post(@RequestBody Persona requestBody){
+    public Persona post(@RequestBody PersonaRequest requestBody){
 
-        return servicio.save(requestBody);
+        Persona new_persona = new Persona();
+
+        new_persona.setNombre(requestBody.getNombre());
+        new_persona.setDireccion(requestBody.getDireccion());
+
+        return servicio.save(new_persona);
 
     }
 
     @RequestMapping(path = "{id}", method = {RequestMethod.PUT, RequestMethod.PATCH})
-    public Persona patch(@RequestBody Persona requestBody, @PathVariable Integer id){
+    public Persona patch(@RequestBody PersonaRequest requestBody, @PathVariable Integer id){
 
         Persona in_bd = servicio.find(id);
 
