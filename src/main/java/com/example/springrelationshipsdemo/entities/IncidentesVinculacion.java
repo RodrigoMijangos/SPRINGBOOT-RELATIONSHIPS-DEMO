@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 
 @Entity
+@Table(name = "carros_incidentes")
 public class IncidentesVinculacion {
 
     @EmbeddedId

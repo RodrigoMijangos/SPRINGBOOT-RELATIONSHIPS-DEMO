@@ -4,7 +4,6 @@ import com.example.springrelationshipsdemo.dao.requests.IncidenteRequest;
 import com.example.springrelationshipsdemo.dao.requests.ValidacionCarroRequest;
 import com.example.springrelationshipsdemo.entities.Carro;
 import com.example.springrelationshipsdemo.entities.Incidente;
-import com.example.springrelationshipsdemo.entities.IncidentesVinculacion;
 import com.example.springrelationshipsdemo.services.CarroServicio;
 import com.example.springrelationshipsdemo.services.IncidenteServicio;
 import com.example.springrelationshipsdemo.services.VinculacionServicio;
@@ -103,7 +102,7 @@ public class IncidentesControlador {
 
         in_bd.getCarrosVinculados().add(vinculacionServicio.vincularCarro(in_bd.getReporte(), carro.getId(), requestBody.getCostos()));
 
-        return in_bd;
+        return servicio.save(in_bd);
 
     }
 

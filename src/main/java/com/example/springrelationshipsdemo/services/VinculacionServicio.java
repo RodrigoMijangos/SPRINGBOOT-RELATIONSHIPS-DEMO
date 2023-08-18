@@ -3,6 +3,7 @@ package com.example.springrelationshipsdemo.services;
 import com.example.springrelationshipsdemo.entities.Carro;
 import com.example.springrelationshipsdemo.entities.Incidente;
 import com.example.springrelationshipsdemo.entities.IncidentesVinculacion;
+import com.example.springrelationshipsdemo.entities.IncidentesVinculacionKey;
 import com.example.springrelationshipsdemo.repositories.IncidentesVinculacionRepositorio;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -34,11 +35,9 @@ public class VinculacionServicio {
         if(carro == null)
             return null;
 
-        IncidentesVinculacion vinculacion = new IncidentesVinculacion();
+        IncidentesVinculacionKey key = new IncidentesVinculacionKey(incidente.getReporte(), carro.getId());
 
-        vinculacion.setIncidente(incidente);
-        vinculacion.setCarro(carro);
-        vinculacion.setCostos(costos);
+        IncidentesVinculacion vinculacion = new IncidentesVinculacion(key, incidente, carro, costos);
 
         return repositorio.save(vinculacion);
 
